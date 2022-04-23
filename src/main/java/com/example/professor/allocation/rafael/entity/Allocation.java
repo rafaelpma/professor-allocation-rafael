@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-public class Allocation {
+public class Allocation { 
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
