@@ -1,5 +1,7 @@
 package com.example.professor.allocation.rafael.service;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -65,12 +67,17 @@ public class AllocationServiceTest {
 
 	@Test
 	public void findByProfessorId() {
+		List<Allocation> list = allocationService.findByProfessorId(1l);
+		
+		assertFalse(list.isEmpty());
 
 	}
 
 	@Test
 	public void findByCourseId() {
-
+		List<Allocation> list = allocationService.findByCourseId(1l);
+		
+		assertFalse(list.isEmpty());
 	}
 
 	@Test

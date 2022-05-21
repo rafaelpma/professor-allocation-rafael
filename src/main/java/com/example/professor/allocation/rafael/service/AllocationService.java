@@ -41,14 +41,14 @@ public class AllocationService {
     }
 
     
-    public void findByProfessorId(Long id) {
-    	this.allocationRepository.findByProfessorId(id);
+    public List<Allocation> findByProfessorId(Long id) {
+    	return this.allocationRepository.findByProfessorId(id);
     	
     }
 
     
-    public void findByCourseId(Long id) {
-    	this.allocationRepository.findByCourseId(id);
+    public List<Allocation> findByCourseId(Long id) {
+    	return this.allocationRepository.findByCourseId(id);
     }
 
     

@@ -1,5 +1,7 @@
 package com.example.professor.allocation.rafael.repository;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -70,12 +72,17 @@ public class AllocationRepositoryTest {
 
 	@Test
 	public void findByProfessorId() {
+		List<Allocation> list = allocationRepository.findByProfessorId(1l);
+		
+		assertFalse(list.isEmpty());
 
 	}
 
 	@Test
 	public void findByCourseId() {
-
+		List<Allocation> list = allocationRepository.findByCourseId(1l);
+		
+		assertFalse(list.isEmpty());
 	}
 
 	@Test
