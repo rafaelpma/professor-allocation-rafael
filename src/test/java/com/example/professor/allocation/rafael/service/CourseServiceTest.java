@@ -35,19 +35,13 @@ public class CourseServiceTest {
 			System.out.println("LISTA VAZIA!!!!");
 		}
 		lista.forEach(a -> {
-			printCourse(a);
+			System.out.println(a);
 
 		});
 		System.out.println("findAll() - end");
 
 	}
 
-	private void printCourse(Course a) {
-		System.out.println("-------------------------------------");
-		System.out.println("Id               : " + a.getId());
-		System.out.println("Nome             : " + a.getName());
-		System.out.println("-------------------------------------");
-	}
 
 	@Test
 	public void findById() {
@@ -67,7 +61,7 @@ public class CourseServiceTest {
 	private void printOptionalCourse(Optional<Course> op) {
 		if (op.isPresent()) {
 			Course a = op.get();
-			printCourse(a);
+			System.out.println(a);
 		} else {
 			System.out.println("Course not found!!!");
 		}

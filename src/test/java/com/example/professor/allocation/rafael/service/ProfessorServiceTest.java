@@ -40,19 +40,14 @@ public class ProfessorServiceTest {
 	    		System.out.println("LISTA VAZIA!!!!");
 	    	}
 	    	lista.forEach(a -> {
-	    		printProfessor(a);
+	    		System.out.println(a);
 	    		
 	    	});
 	    	System.out.println("findAll() - end");
 
 	    }
 
-		private void printProfessor(Professor a) {
-			System.out.println("-------------------------------------");
-			System.out.println("Id               : " + a.getId());
-			System.out.println("Nome             : " + a.getName());
-			System.out.println("-------------------------------------");
-		}
+
 
 	    @Test
 	    public void findById() {
@@ -72,7 +67,7 @@ public class ProfessorServiceTest {
 		private void printOptionalProfessor(Optional<Professor> op) {
 			if (op.isPresent()) {
 	    		Professor a = op.get();
-	    		printProfessor(a);
+	    		System.out.println(a);
 	    	} else {
 	    		System.out.println("Professor not found!!!");
 	    	}

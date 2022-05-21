@@ -35,19 +35,14 @@ public class DepartmentServicesTest {
 			System.out.println("LISTA VAZIA!!!!");
 		}
 		lista.forEach(a -> {
-			printDepartment(a);
+			System.out.println(a);
 
 		});
 		System.out.println("findAll() - end");
 
 	}
 
-	private void printDepartment(Department a) {
-		System.out.println("-------------------------------------");
-		System.out.println("Id               : " + a.getId());
-		System.out.println("Nome             : " + a.getName());
-		System.out.println("-------------------------------------");
-	}
+
 
 	@Test
 	public void findById() {
@@ -67,7 +62,7 @@ public class DepartmentServicesTest {
 	private void printOptionalDepartment(Optional<Department> op) {
 		if (op.isPresent()) {
 			Department a = op.get();
-			printDepartment(a);
+			System.out.println(a);
 		} else {
 			System.out.println("Department not found!!!");
 		}

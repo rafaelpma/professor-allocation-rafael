@@ -24,33 +24,24 @@ public class AllocationServiceTest {
 
 	@Test
 	public void findAll() {
-		System.out.println("FIND ALL - INIT");
+		System.out.println("findAll() - init");
 		List<Allocation> lista = allocationService.findAll();
 		if (lista.isEmpty()) {
 			System.out.println("LISTA VAZIA!!!!");
 		}
 		lista.forEach(a -> {
-			printAllocation(a);
+			System.out.println(a);
 
 		});
-		System.out.println("FIND ALL - END");
+		System.out.println("findAll() - end");
 
 	}
 
-	private void printAllocation(Allocation a) {
-		System.out.println("-------------------------------------");
-		System.out.println("Id               : " + a.getId());
-		System.out.println("Nome do Professor: " + a.getProfessor().getName());
-		System.out.println("Curso            : " + a.getCourse().getName());
-		System.out.println("Inicio           : " + a.getStartHour());
-		System.out.println("Fim              : " + a.getEndHour());
-		System.out.println("Dia da Semana    : " + a.getDayOfWeek());
-		System.out.println("-------------------------------------");
-	}
+
 
 	@Test
 	public void findById() {
-		System.out.println("FIND BY ID - INIT");
+		System.out.println("findById() - init");
 
 		Optional<Allocation> op = allocationService.findById(2l);
 
@@ -59,14 +50,14 @@ public class AllocationServiceTest {
 		Optional<Allocation> op2 = allocationService.findById(200l);
 
 		printOptionalAllocation(op2);
-		System.out.println("FIND BY ID - END");
+		System.out.println("findById() - end");
 
 	}
 
 	private void printOptionalAllocation(Optional<Allocation> op) {
 		if (op.isPresent()) {
 			Allocation a = op.get();
-			printAllocation(a);
+			System.out.println(a);
 		} else {
 			System.out.println("Allocation não Encontrado!!!");
 		}
@@ -84,7 +75,7 @@ public class AllocationServiceTest {
 
 	@Test
 	public void save_create() throws ParseException {
-		System.out.println("SAVE_CREATE - INIT");
+		System.out.println("save_create() - init");
 
 		Allocation allocation = new Allocation();
 
@@ -98,13 +89,13 @@ public class AllocationServiceTest {
 
 		allocationService.save(allocation);
 
-		System.out.println("SAVE_CREATE - END");
+		System.out.println("save_create() - end");
 
 	}
 
 	@Test
 	public void save_update() throws ParseException {
-		System.out.println("SAVE_UPDATE - INIT");
+		System.out.println("save_update() - init");
 		Optional<Allocation> op = allocationService.findById(2l);
 		if (op.isPresent()) {
 			Allocation allocation = op.get();
@@ -114,7 +105,7 @@ public class AllocationServiceTest {
 			printOptionalAllocation(op);
 
 		}
-		System.out.println("SAVE_UPDATE - END");
+		System.out.println("save_update() - end");
 
 
 
@@ -122,7 +113,7 @@ public class AllocationServiceTest {
 
 	@Test
 	public void deleteById() {
-		System.out.println("DELETE BY ID - INIT");
+		System.out.println("deleteById() - init");
 		Optional<Allocation> op = allocationService.findById(4L);
 		if (op.isPresent()) {
 			findAll();
@@ -130,18 +121,18 @@ public class AllocationServiceTest {
 			findAll();		
 		}
 
-		System.out.println("DELETE BY ID - END");
+		System.out.println("deleteById() - end");
 
 	}
 
 	@Test
 	public void deleteAll() {
 
-		System.out.println("DELETE ALL - INIT");
+		System.out.println("deleteAll() - init");
 		findAll();
 		allocationService.deleteAll();
 		findAll();
-		System.out.println("DELETE ALL - END");
+		System.out.println("deleteAll() - end");
 
 	}
 }
