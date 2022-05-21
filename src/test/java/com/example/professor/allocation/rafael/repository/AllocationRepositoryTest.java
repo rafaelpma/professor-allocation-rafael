@@ -35,23 +35,14 @@ public class AllocationRepositoryTest {
 	    		System.out.println("LISTA VAZIA!!!!");
 	    	}
 	    	lista.forEach(a -> {
-	    		printAllocation(a);
+	    		System.out.println(a);
 	    		
 	    	});
 	    	System.out.println("FIND ALL - END");
 
 	    }
 
-		private void printAllocation(Allocation a) {
-			System.out.println("-------------------------------------");
-			System.out.println("Id               : " + a.getId());
-			System.out.println("Nome do Professor: " + a.getProfessor().getName());
-			System.out.println("Curso            : " + a.getCourse().getName());
-			System.out.println("Inicio           : " + a.getStartHour());
-			System.out.println("Fim              : " + a.getEndHour());
-			System.out.println("Dia da Semana    : " + a.getDayOfWeek());
-			System.out.println("-------------------------------------");
-		}
+
 
 	    @Test
 	    public void findById() {
@@ -71,7 +62,7 @@ public class AllocationRepositoryTest {
 		private void printOptionalAllocation(Optional<Allocation> op) {
 			if (op.isPresent()) {
 	    		Allocation a = op.get();
-	    		printAllocation(a);
+	    		System.out.println(a);
 	    	} else {
 	    		System.out.println("Allocation não Encontrado!!!");
 	    	}

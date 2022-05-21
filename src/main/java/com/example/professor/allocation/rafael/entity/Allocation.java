@@ -125,5 +125,25 @@ public class Allocation {
 	}
 	
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id: ");
+		sb.append(this.id);
+		sb.append(", dayOfWeek: ");
+		sb.append(this.dayOfWeek);
+		sb.append(", startHour: ");
+		sb.append(this.startHour);
+		sb.append(", endHour: ");
+		sb.append(this.endHour);
+		sb.append(", professorId: ");
+		sb.append(this.professorId);
+		sb.append(", courseId: ");
+		sb.append(this.courseId);
+		
+		return sb.toString();
+	}
+	
+	
 
 }

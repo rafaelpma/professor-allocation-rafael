@@ -80,5 +80,19 @@ public class Professor {
 		this.professors = professors;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id: ");
+		sb.append(this.id);
+		sb.append(", nome: ");
+		sb.append(this.name);
+		sb.append(", cpf: ");
+		sb.append(this.cpf);
+		sb.append(", deprtmentId: ");
+		sb.append(this.departmentId);
+		return sb.toString();
+	}
+	
 	
 }

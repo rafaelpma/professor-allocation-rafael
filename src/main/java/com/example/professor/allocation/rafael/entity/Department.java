@@ -31,5 +31,16 @@ public class Department {
 		this.name = name;
 	}
 	
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id: ");
+		sb.append(this.id);
+		sb.append(", nome: ");
+		sb.append(this.name);
+		return sb.toString();
+	}
+	
 
 }

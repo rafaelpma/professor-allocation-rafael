@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.professor.allocation.rafael.entity.Allocation;
+import com.example.professor.allocation.rafael.entity.Course;
+import com.example.professor.allocation.rafael.entity.Professor;
 import com.example.professor.allocation.rafael.repository.AllocationRepository;
-import com.example.professor.allocation.rafael.repository.CourseRepository;
-import com.example.professor.allocation.rafael.repository.ProfessorRepository;
 
 @Service
 public class AllocationService {
@@ -17,17 +17,17 @@ public class AllocationService {
 	
 	private final AllocationRepository allocationRepository;
 	
-	private final CourseRepository courseRepository;
+	private final CourseService courseService;
 	
-	private final ProfessorRepository professorRepository;
+	private final ProfessorService professorService;
 	
 	
 	public AllocationService(AllocationRepository allocationRepository,
-			CourseRepository courseRepository, ProfessorRepository professorRepository) {
+			CourseService courseRepository, ProfessorService professorRepository) {
 		super();
 		this.allocationRepository = allocationRepository;
-		this.courseRepository = courseRepository;
-		this.professorRepository = professorRepository;
+		this.courseService = courseRepository;
+		this.professorService = professorRepository;
 	}
 	
 	public List<Allocation> findAll() {
@@ -65,17 +65,43 @@ public class AllocationService {
     	}
     }
 
-	private Allocation saveInternal(Allocation allocation) {
-		
-		
-		/**
-		 * Incluir regras de negócio de alocação
-		 */
-		
-		
-		return this.allocationRepository.save(allocation);
-	}
+    private Allocation saveInternal(Allocation allocation) {
+    	if (hasCollision(allocation) || isEndHourGreaterThanStartHour(allocation)) {
+    		throw new RuntimeException("Invalid Allocation!");
+    	}
+    	
+    	allocation = allocationRepository.save(allocation);
+    	Optional<Professor> opProf = professorService.findById(allocation.getProfessorId());
+    	Optional<Course> opCourse = courseService.findById(allocation.getCourseId());
 
+    	allocation.setProfessor(opProf.get());
+    	allocation.setCourse(opCourse.get());
+
+    	return allocation;
+    }
+    
+    public boolean hasCollision(Allocation allocation) {
+    	
+    	
+    	List<Allocation> list = allocationRepository.findByProfessorId(allocation.getProfessorId());
+    	for (Allocation a : list) {
+    		if (!a.getId().equals(allocation.getId()) &&
+    				a.getDayOfWeek().equals(allocation.getDayOfWeek()) &&
+    				a.getStartHour().compareTo(allocation.getEndHour()) < 0 &&
+    				allocation.getStartHour().compareTo(a.getEndHour()) < 0) {
+    			return true;
+    		}
+    	}
+    	return false;
+    	
+    }
+
+    boolean isEndHourGreaterThanStartHour(Allocation allocation) {
+        return allocation != null && 
+        		allocation.getStartHour() != null && 
+        		allocation.getEndHour() != null && 
+        		allocation.getEndHour().compareTo(allocation.getStartHour()) > 0;
+    }
 
     
     public void deleteById(Long id) {
