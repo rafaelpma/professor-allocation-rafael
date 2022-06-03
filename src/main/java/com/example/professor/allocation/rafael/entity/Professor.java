@@ -86,7 +86,7 @@ public class Professor {
 		StringBuilder sb = new StringBuilder();
 		sb.append("id: ");
 		sb.append(this.id);
-		sb.append(", nome: ");
+		sb.append(", name: ");
 		sb.append(this.name);
 		sb.append(", cpf: ");
 		sb.append(this.cpf);
