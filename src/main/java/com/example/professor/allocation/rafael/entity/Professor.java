@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table(name = "professor")
 public class Professor {
 
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

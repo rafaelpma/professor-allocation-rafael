@@ -33,22 +33,22 @@ public class ProfessorService {
     }
 
 
-    public Professor save(Professor allocation) {
-    	allocation.setId(null);
-    	return saveInternal(allocation);
+    public Professor save(Professor professor) {
+    	professor.setId(null);
+    	return saveInternal(professor);
     }
     
-    public Professor update(Professor allocation) {
-    	if (allocation.getId() != null) {
-    		return saveInternal(allocation);
+    public Professor update(Professor professor) {
+    	if (professor.getId() != null) {
+    		return saveInternal(professor);
     	} else {
     		return null;
     	}
     }
 
-	private Professor saveInternal(Professor allocation) {
+	private Professor saveInternal(Professor professor) {
 
-		return this.professorRepository.save(allocation);
+		return this.professorRepository.save(professor);
 	}
 
 

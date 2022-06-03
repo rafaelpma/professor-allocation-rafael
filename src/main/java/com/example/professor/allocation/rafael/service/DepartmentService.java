@@ -33,22 +33,22 @@ public class DepartmentService {
     }
 
 
-    public Department save(Department allocation) {
-    	allocation.setId(null);
-    	return saveInternal(allocation);
+    public Department save(Department department) {
+    	department.setId(null);
+    	return saveInternal(department);
     }
     
-    public Department update(Department allocation) {
-    	if (allocation.getId() != null) {
-    		return saveInternal(allocation);
+    public Department update(Department department) {
+    	if (department.getId() != null) {
+    		return saveInternal(department);
     	} else {
     		return null;
     	}
     }
 
-	private Department saveInternal(Department allocation) {
+	private Department saveInternal(Department department) {
 
-		return this.departmentRepository.save(allocation);
+		return this.departmentRepository.save(department);
 	}
 
 

@@ -33,22 +33,22 @@ public class CourseService {
     }
 
 
-    public Course save(Course allocation) {
-    	allocation.setId(null);
-    	return saveInternal(allocation);
+    public Course save(Course course) {
+    	course.setId(null);
+    	return saveInternal(course);
     }
     
-    public Course update(Course allocation) {
-    	if (allocation.getId() != null) {
-    		return saveInternal(allocation);
+    public Course update(Course course) {
+    	if (course.getId() != null) {
+    		return saveInternal(course);
     	} else {
     		return null;
     	}
     }
 
-	private Course saveInternal(Course allocation) {
+	private Course saveInternal(Course course) {
 
-		return this.courseRepository.save(allocation);
+		return this.courseRepository.save(course);
 	}
 
 
