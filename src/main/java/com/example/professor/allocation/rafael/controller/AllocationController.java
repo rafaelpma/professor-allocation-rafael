@@ -131,15 +131,6 @@ public class AllocationController {
 
 	}
 
-//
-//
-//	public ResponseEntity<Boolean> hasCollision(Allocation allocation) {
-//
-//
-//
-//		return null;
-//
-//	}
 
 
 	@ApiOperation(value ="Delete all Allocations")
