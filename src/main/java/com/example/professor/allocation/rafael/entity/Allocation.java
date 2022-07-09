@@ -33,11 +33,11 @@ public class Allocation {
 	private DayOfWeek dayOfWeek;
 
 	@Temporal(TemporalType.TIME)
-	@Column(name = "start", nullable = false)
+	@Column(name = "start_hour", nullable = false)
 	private Date startHour;
 
 	@Temporal(TemporalType.TIME)
-	@Column(name = "end", nullable = false)
+	@Column(name = "end_hour", nullable = false)
 	private Date endHour;
 
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

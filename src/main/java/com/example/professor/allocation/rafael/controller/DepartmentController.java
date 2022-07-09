@@ -84,11 +84,13 @@ public class DepartmentController {
 		@ApiResponse(code = 200, message = "OK"),
 		@ApiResponse(code = 404, message = "Not Found")
 	})
-	@PutMapping( consumes = MediaType.APPLICATION_JSON_VALUE, produces= MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping( path = "/{department_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces= MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Department> update(@RequestBody Department department) {
+	public ResponseEntity<Department> update(@PathVariable(name="department_id") Long id, @RequestBody Department department) {
 		try {
-			Department a = this.departmentService.save(department);
+			department.setId(id);			
+			
+			Department a = this.departmentService.update(department);
 			if (a != null) {
 				return new ResponseEntity<>(a,HttpStatus.CREATED);
 			} else {
